@@ -1,0 +1,81 @@
+
+package gemelobinario;
+
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+/**
+ *
+ * @author J-CHAN
+ */
+public class Gemelobinario {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    
+        Scanner sc = new Scanner(System.in);
+    
+        String nombre;
+        int sum=0;
+        int aux = 0;
+        int suma = 0;
+        int resultado = 0;
+
+   
+        //INGRESAR NOMBRE
+        
+        System.out.println("Escribe tu nombre");
+        nombre= sc.nextLine();
+        
+         String stringValue=nombre;
+        
+        List<Integer> listOfIntegers = stringValue.chars()                      
+                .boxed()                      
+                .collect(Collectors.toList());  
+
+        for(int i:listOfIntegers) {
+                System.out.println("Valor en ASCII: "+ i);
+       
+        }
+        
+        //SUMAR LOS NUMEROS ASCCI
+        System.out.println("Ingrese la cantidad de resultados a sumar");
+        sum= sc.nextInt();
+            System.out.println("Ingresa los datos a sumar");
+           while(aux < sum) {
+            aux++;
+             
+            suma += sc.nextInt();
+        }
+         
+        System.out.println("La suma total es: "+suma);
+        
+        while(suma > 0) {
+            resultado += suma % 10;
+
+            suma = suma / 10;
+
+        }
+       
+        //DE DECIMAL A BINARIO
+        int numero=resultado;
+       int exp, digito;
+        double binario;  
+
+        exp=0;
+        binario=0;
+        while(numero!=0){
+                digito = numero % 2;           
+                binario = binario + digito * Math.pow(10, exp);                                                   
+                exp++;
+                numero = numero/2;
+      
+        
+    }
+        
+        System.out.println("Su gemelo vinario es "+ resultado+" Resultado en binario :"+binario);
+    }
+}
